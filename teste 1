@@ -1,0 +1,86 @@
+using System;
+using System.ComponentModel;
+//Uma Classe é a representação de um conjunto de objetos que
+//compartilham a mesma estrutura de atributos, operações e relacionamentos
+//dentro de um mesmo contexto.
+class Livro
+{
+    // toda a classe e um exemplo de encapsulamento
+    private string Titulo;
+    private string Autor;
+    private int AnoDePublicacao;
+    // ocorreu um abstrção 
+    public Livro(string Titulo, string Autor,int anodepublicacao)// metodo contrutor onde esta ocorrendo a inicialização dos atributos do objeto
+                                                                 //garantindo que ele seja criado em um estado valido
+    {
+        this.Titulo = Titulo;
+        this.Autor = Autor;
+        this.AnoDePublicacao = anodepublicacao;
+    }
+
+    public string getTitulo()// retorna um valor
+    {
+        return Titulo;
+    }
+
+    public void seTitulo()// atribui o valor
+    {
+        this.Titulo = Titulo;
+    }
+
+    public string getAutor()
+    {
+        return Autor;
+    }
+
+    public void setAutor()
+    {
+        this.Autor = Autor;
+    }
+
+    public int getAnoDePublicacao()
+    {
+        return AnoDePublicacao;
+    }
+
+    public void setAnoDePublicacao()
+    {
+        this.AnoDePublicacao = AnoDePublicacao;
+    }
+
+    public void ExibirDados()
+    {
+        Console.WriteLine($"O titulo do livro e {Titulo} seu autor foi {Autor} e seu ano de publicação foi em {AnoDePublicacao}");
+    }
+}
+
+static class Biblioteca
+{
+   private static List<Livro> Lista = new List<Livro>();// foi criada uma lista do tipo Livro para que se possa fazer a acição de novo livros
+
+   public static void AdicionarLivro(Livro x)// passagem de parametro de um objeto da classe livro
+   {
+        Lista.Add(x);//É um método da classe List<T> que adiciona um elemento ao final da lista.
+        //Neste caso, o elemento é o objeto livro que foi passado como parâmetro para o método AdicionarLivro.
+        Console.WriteLine("Livro adicionado com sucesso!");
+   }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Livro A = new Livro("bruxos e bruxas","james petterson",2018);
+        A.ExibirDados();
+        Biblioteca.AdicionarLivro(A);
+        Livro B = new Livro("persy jackson", "arthur vilela", 2011);
+        B.ExibirDados();
+        Biblioteca.AdicionarLivro(B);
+        Livro C = new Livro("bruxos e bruxas", "james petterson", 2018);
+        C.ExibirDados();
+        Biblioteca.AdicionarLivro(C);
+
+        Console.ReadKey();
+    }
+}
+
+//o codigo acima e um exemplo de paradigma,pois foi a forma que eu encontrei(podendo ter varias outras) de organizar e resolver este problema
